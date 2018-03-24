@@ -1,6 +1,7 @@
 (function(){
+  var CryptoJS = require('crypto-js');
+
   module.exports = {
-    CryptoJS: require('crypto-js'),
     getBase64: function(rawStr){
       var wordArray = CryptoJS.enc.Utf8.parse(rawStr);
       return CryptoJS.enc.Base64.stringify(wordArray);
@@ -27,26 +28,7 @@
       console.log(base64Signature);
 
       return jwt.signature == base64Signature;
-    },
-
-    exampleJWT: [
-      {
-        "alg":  "HS256",
-        "typ":  "JWT"
-      },
-      {
-        "sub": "1234567890",
-        "name": "John Doe",
-        "iat": 1516239022
-      }
-    ],
-
-    exampleJWTBase64: {
-      "header":     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-      "payload":    "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ",
-      "signature":  "XbPfbIHMI6arZ3Y922BhjWgQzWXcXNrz0ogtVhfEd2o"
     }
   }
-
 
 }());

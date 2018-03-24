@@ -11,9 +11,17 @@ process.stdin.on('keypress', (str, key) => {
   }
 
   switch (key.name) {
-    case '1':
+    case GETVARIABLES:
       console.log(exampleJWT.JWT);
       console.log(exampleJWT.JWTBase64);
+      break;
+
+    case DECODETOKEN:
+      jwt.decodeToken(exampleJWT.JWTBase64);
+      break;
+
+    case TOBASE64:
+      console.log(jwt.getBase64("teststring"));
       break;
 
     default:
@@ -23,9 +31,11 @@ process.stdin.on('keypress', (str, key) => {
 });
 
 var constants = {
-  GETVARIABLES: '1'
+  GETVARIABLES: '1',
+  DECODETOKEN: '2',
+  TOBASE64: '3'
 }
-const GETVARIABLES = '1';
+const GETVARIABLES = '1', DECODETOKEN = '2', TOBASE64 = '3';
 
 console.log("Press...");
 for(key in constants)
